@@ -21,6 +21,7 @@ end_message_id = 150
 app = Client(session_name, api_id, api_hash)
 
 # Function to forward media messages from source to destination channel
+# Function to forward media messages with captions from source to destination channel
 async def forward_media_messages():
     try:
         # Get the source channel object
@@ -35,11 +36,11 @@ async def forward_media_messages():
             if message.media:
                 media_message = None
                 if isinstance(message.media, MessageMediaPhoto):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True)
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
                 elif isinstance(message.media, MessageMediaVideo):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True)
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
                 elif isinstance(message.media, MessageMediaDocument):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True)
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
 
                 if media_message is not None:
                     print(f'Forwarded message {message.message_id} to destination channel {destination_channel_id}')
@@ -50,6 +51,7 @@ async def forward_media_messages():
         print('You are not a member of the channel')
     except ChatAdminRequired:
         print('You must be an admin of the channel')
+
 
 # Run the function to forward media messages
 with app:
