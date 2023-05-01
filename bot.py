@@ -5,12 +5,11 @@ from config import LOGGER
 
 class User(Client):
     def __init__(self):
-        super().__init__(
-            "userbot"
+        super().__init__(            
             session_string=Config.TG_USER_SESSION,
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,
-            name="my_bot" # Add a name argument here
+            name="user_session" # Add a name argument here
         )
         self.LOGGER = LOGGER
 
