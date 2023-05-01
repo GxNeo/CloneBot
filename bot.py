@@ -20,7 +20,6 @@ end_message_id = 150
 # Start the Pyrogram client
 app = Client(session_name, api_id, api_hash)
 
-# Function to forward media messages from source to destination channel
 # Function to forward media messages with captions from source to destination channel
 async def forward_media_messages():
     try:
@@ -45,12 +44,16 @@ async def forward_media_messages():
                 if media_message is not None:
                     print(f'Forwarded message {message.message_id} to destination channel {destination_channel_id}')
 
+                    # Wait for 10 seconds before forwarding the next message
+                    await asyncio.sleep(10)
+
     except PeerIdInvalid:
         print('Invalid channel ID provided')
     except UserNotParticipant:
         print('You are not a member of the channel')
     except ChatAdminRequired:
         print('You must be an admin of the channel')
+
 
 
 # Run the function to forward media messages
