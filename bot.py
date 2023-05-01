@@ -6,7 +6,7 @@ from config import LOGGER
 class User(Client):
     def __init__(self):
         super().__init__(
-            session_name=Config.TG_USER_SESSION,
+            session_string=Config.TG_USER_SESSION,
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,           
         )
