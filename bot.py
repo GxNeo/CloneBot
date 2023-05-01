@@ -24,7 +24,9 @@ app = Client(session_name, api_id, api_hash)
 
 
 # Function to forward media messages with captions from source to destination channel
+@app.on_message(filters.command('forward') & filters.user(5163706369))
 async def forward_media_messages():
+    await message.reply_text(" Forwarding Started")
     try:
         # Get the source channel object
         source_channel = await app.get_chat(source_channel_id)
