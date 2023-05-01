@@ -1,3 +1,3 @@
-from bot impor User
+from bot import User
 
 User().run()
