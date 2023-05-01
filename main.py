@@ -70,4 +70,5 @@ async def forward_command_handler(client, message):
 
 
 # Run the client
+print("User Started 🔥")
 app.run()
