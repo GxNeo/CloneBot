@@ -2,13 +2,12 @@ from pyrogram import Client, filters
 from pyrogram.errors import UserNotParticipant, ChatAdminRequired, PeerIdInvalid
 from pyrogram.types import MessageMediaPhoto, MessageMediaVideo, MessageMediaDocument
 import asyncio
+from config import Config 
 
 
-
-# API credentials and session name
-api_id = 123456 # Enter your API ID here
-api_hash = 'abcdefghijklmnopqrstuvwxyz012345' # Enter your API hash here
-session_name = 'my_user_session' # Enter a name for your session
+api_id = Config.API_ID
+api_hash = Config.API_HASH
+session_name = Config.TG_USER_SESSION
 
 # Source and destination channel IDs
 source_channel_id = -1001234567890 # Enter the ID of your source channel here
