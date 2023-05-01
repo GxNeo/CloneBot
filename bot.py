@@ -33,31 +33,29 @@ async def forward_media_messages():
         destination_channel = await app.get_chat(destination_channel_id)
 
         # Loop through the messages and forward media messages to destination channel
-        for message_id in range(start_message_id, end_message_id+1):
+                for message_id in range(start_message_id, end_message_id+1):
             message = await app.get_messages(source_channel_id, message_id)
             if message.media:
                 media_message = None
-                if isinstance(message.media, MessageMediaPhoto):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.id, as_copy=True, caption=message.caption)
-                elif isinstance(message.media, MessageMediaVideo):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.id, as_copy=True, caption=message.caption)
-                elif isinstance(message.media, MessageMediaDocument):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.id, as_copy=True, caption=message.caption)
+                if isinstance(message.media, types.MessageMediaPhoto):
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
+                elif isinstance(message.media, types.MessageMediaVideo):
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
+                elif isinstance(message.media, types.MessageMediaDocument):
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
 
                 if media_message is not None:
-                    print(f'Forwarded message {message.id} to destination channel {destination_channel_id}')
+                    print(f'Forwarded message {message.message_id} to destination channel {destination_channel_id}')
 
                     # Wait for 10 seconds before forwarding the next message
                     await asyncio.sleep(10)
 
-    except PeerIdInvalid:
+    except types.exceptions.PeerIdInvalid:
         print('Invalid channel ID provided')
-    except UserNotParticipant:
+    except types.exceptions.UserNotParticipant:
         print('You are not a member of the channel')
-    except ChatAdminRequired:
+    except types.exceptions.ChatAdminRequired:
         print('You must be an admin of the channel')
-
-
 
 # Run the function to forward media messages
 with app:
