@@ -10,12 +10,12 @@ api_hash = Config.API_HASH
 session_name = Config.TG_USER_SESSION
 
 # Source and destination channel IDs
-source_channel_id = -1001234567890 # Enter the ID of your source channel here
-destination_channel_id = -1000987654321 # Enter the ID of your destination channel here
+source_channel_id = -1001921917995 # Enter the ID of your source channel here
+destination_channel_id = -1001986761426 # Enter the ID of your destination channel here
 
 # Start and end message IDs
-start_message_id = 1
-end_message_id = 150
+start_message_id = 2
+end_message_id = 8
 
 # Start the Pyrogram client
 app = Client(session_name, api_id, api_hash)
