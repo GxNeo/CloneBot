@@ -6,7 +6,7 @@ from config import Config
 from bot import User as app
 
 
-"""
+HELLO = """
 api_id = Config.API_ID
 api_hash = Config.API_HASH
 session_name = Config.TG_USER_SESSION
@@ -18,7 +18,8 @@ destination_channel_id = -1001986761426 # Enter the ID of your destination chann
 # Start and end message IDs
 start_message_id = 2
 end_message_id = 8
-"""
+
+HELLOR = """
 # Start the Pyrogram client
 app = Client(session_name, api_id, api_hash)
 """
@@ -72,7 +73,7 @@ async def forward_command_handler(client, message):
     await forward_media_messages()
 
 
-"""
+HELLOT = """
 # Run the client
 print("User Started 🔥")
 app.run()
