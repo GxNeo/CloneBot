@@ -35,14 +35,14 @@ async def forward_media_messages():
             if message.media:
                 media_message = None
                 if isinstance(message.media, MessageMediaPhoto):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.id, as_copy=True, caption=message.caption)
                 elif isinstance(message.media, MessageMediaVideo):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.id, as_copy=True, caption=message.caption)
                 elif isinstance(message.media, MessageMediaDocument):
-                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True, caption=message.caption)
+                    media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.id, as_copy=True, caption=message.caption)
 
                 if media_message is not None:
-                    print(f'Forwarded message {message.message_id} to destination channel {destination_channel_id}')
+                    print(f'Forwarded message {message.id} to destination channel {destination_channel_id}')
 
                     # Wait for 10 seconds before forwarding the next message
                     await asyncio.sleep(10)
