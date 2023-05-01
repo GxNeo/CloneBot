@@ -20,8 +20,12 @@ destination_channel_id = -1000987654321 # Enter the ID of your destination chann
 start_message_id = 1
 end_message_id = 150
 
-# Start the Pyrogram client
+api_id = Config.API_ID
+api_hash = Config.API_HASH
+session_name = Config.TG_USER_SESSION
+
 app = Client(session_name, api_id, api_hash)
+
 
 # Function to forward media messages with captions from source to destination channel
 async def forward_media_messages():
@@ -60,3 +64,6 @@ async def forward_media_messages():
 # Run the function to forward media messages
 with app:
     app.loop.run_until_complete(forward_media_messages())
+
+
+app.start()
