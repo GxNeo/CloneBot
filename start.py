@@ -1,3 +1,3 @@
 from bot impor User
 
-User.run()
+User().run()
