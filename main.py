@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.errors import UserNotParticipant, ChatAdminRequired, PeerIdInvalid
-from pyrogram.types import MessageMediaPhoto, MessageMediaVideo, MessageMediaDocument
+from pyrogram import types
 import asyncio
 from config import Config 
 
@@ -35,11 +35,11 @@ async def forward_media_messages():
             message = await app.get_messages(source_channel_id, message_id)
             if message.media:
                 media_message = None
-                if isinstance(message.media, MessageMediaPhoto):
+                if isinstance(message.media, types.Photo):
                     media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True)
-                elif isinstance(message.media, MessageMediaVideo):
+                elif isinstance(message.media, types.Video):
                     media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True)
-                elif isinstance(message.media, MessageMediaDocument):
+                elif isinstance(message.media, types.Document):
                     media_message = await app.forward_messages(chat_id=destination_channel_id, from_chat_id=source_channel_id, message_ids=message.message_id, as_copy=True)
 
                 if media_message is not None:
