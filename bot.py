@@ -1,8 +1,11 @@
-from pyrogram import Client
+from pyrogram import Client, filters
 from pyrogram.errors import PeerIdInvalid
 from pyrogram.errors import UserNotParticipant
 from pyrogram.errors import ChatAdminRequired
 from pyrogram.types import MessageMediaPhoto, MessageMediaVideo, MessageMediaDocument
+from pyrogram import types
+import asyncio
+
 
 # API credentials and session name
 api_id = 123456 # Enter your API ID here
